@@ -93,6 +93,7 @@ const createForecastItem = (iconSrc, time, temperature) => {
 
 const handleLocationButtonClick = async () => {
   const locationInputValue = locationInput.value;
+  localStorage.setItem("city", locationInputValue);
   const currentWeather = await getCurrentWeatherByCity(locationInputValue);
   const forecast = await getForecastByCity(locationInputValue);
 
@@ -116,5 +117,19 @@ forecastContainer.addEventListener("wheel", (event) => {
       left: event.deltaY,
       behavior: "smooth",
     });
+  }
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const cityFromLocalStorage = localStorage.getItem("city");
+
+  if (cityFromLocalStorage) {
+    locationInput.value = cityFromLocalStorage;
+    handleLocationButtonClick();
+  }
+});
+locationInput.addEventListener("keydown", (event) => {
+  if (event.key == "Enter") {
+    handleLocationButtonClick();
+    locationInput.blur();
   }
 });

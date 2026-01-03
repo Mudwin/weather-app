@@ -2,7 +2,6 @@
 
 ::-webkit-scrollbar {
   display: none;
-  /* opacity: 0; */
 }
 
 .container {
@@ -26,6 +25,7 @@
   display: flex;
   justify-content: space-between;
   gap: 10px;
+  margin-bottom: 10px;
 }
 
 .location__input {
@@ -55,6 +55,11 @@
   padding-inline: 5px;
 }
 
+.location__button:active {
+  border-color: transparent;
+  outline: 2px solid black;
+}
+
 .location__button img {
   width: 30px;
   height: 30px;
@@ -68,7 +73,7 @@
 }
 
 .current-weather__icon {
-  /* outline: 1px solid red; */
+  /*  */
 }
 
 .current-weather__icon img {
@@ -82,6 +87,7 @@
 
 .current-weather__status {
   font-size: 25px;
+  text-align: center;
 }
 
 .forecast {
@@ -96,7 +102,6 @@
   align-items: center;
   gap: 10px;
   min-width: 60px;
-  /* outline: 1px solid pink; */
 }
 
 .forecast__item-time {
