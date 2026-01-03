@@ -49,6 +49,9 @@
   background-color: transparent;
   border: 1px solid gray;
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding-inline: 5px;
 }
 
@@ -69,7 +72,8 @@
 }
 
 .current-weather__icon img {
-  /* outline: 1px solid red; */
+  width: 200px;
+  height: 200px;
 }
 
 .current-weather__temperature {
