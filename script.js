@@ -7,7 +7,7 @@ let currentLocalTime = null;
 
 const getCurrentWeatherByCity = async (city) => {
   const data = await fetch(
-    `http://api.weatherapi.com/v1/current.json?key=345927806ef546318c4164648260301&q=${city}&aqi=no`
+    `https://api.weatherapi.com/v1/current.json?key=345927806ef546318c4164648260301&q=${city}&aqi=no`
   );
   const currentWeather = await data.json();
   currentLocalTime = currentWeather.location.localtime.slice(11, 13);
@@ -16,7 +16,7 @@ const getCurrentWeatherByCity = async (city) => {
 
 const getForecastByCity = async (city) => {
   const data = await fetch(
-    `http://api.weatherapi.com/v1/forecast.json?key=345927806ef546318c4164648260301&q=${city}&days=1&aqi=no&alerts=no`
+    `https://api.weatherapi.com/v1/forecast.json?key=345927806ef546318c4164648260301&q=${city}&days=1&aqi=no&alerts=no`
   );
   const forecast = await data.json();
   return forecast;
