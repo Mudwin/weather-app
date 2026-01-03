@@ -3,11 +3,14 @@ const locationInput = document.querySelector(".location__input");
 const currentWeatherContainer = document.querySelector(".current-weather");
 const forecastContainer = document.querySelector(".forecast");
 
+let currentLocalTime = null;
+
 const getCurrentWeatherByCity = async (city) => {
   const data = await fetch(
     `http://api.weatherapi.com/v1/current.json?key=345927806ef546318c4164648260301&q=${city}&aqi=no`
   );
   const currentWeather = await data.json();
+  currentLocalTime = currentWeather.location.localtime.slice(11, 13);
   return currentWeather;
 };
 
@@ -43,16 +46,17 @@ const renderCurrentWeather = (iconSrc, temperature, status) => {
 
 const renderForecast = (forecast) => {
   forecastContainer.innerHTML = "";
-  console.log(forecast);
 
-  forecast.forEach((forecastItem) => {
-    const forecastItemElement = createForecastItem(
-      forecastItem.condition.icon,
-      forecastItem.time,
-      forecastItem.temp_c
-    );
+  forecast.forEach((forecastItem, index) => {
+    if (index >= currentLocalTime) {
+      const forecastItemElement = createForecastItem(
+        forecastItem.condition.icon,
+        index == currentLocalTime ? "Сейчас" : forecastItem.time,
+        forecastItem.temp_c
+      );
 
-    forecastContainer.append(forecastItemElement);
+      forecastContainer.append(forecastItemElement);
+    }
   });
 };
 
@@ -62,7 +66,13 @@ const createForecastItem = (iconSrc, time, temperature) => {
 
   const forecastItemTime = document.createElement("p");
   forecastItemTime.classList.add("forecast__item-time");
-  forecastItemTime.textContent = time.slice(11);
+
+  if (time != "Сейчас") {
+    forecastItemTime.textContent = time.slice(11);
+  } else {
+    forecastItemTime.textContent = time;
+  }
+
   forecastItemContainer.append(forecastItemTime);
 
   const forecastItemIconContainer = document.createElement("div");
@@ -99,3 +109,12 @@ const handleLocationButtonClick = async () => {
 };
 
 locationButton.addEventListener("click", handleLocationButtonClick);
+forecastContainer.addEventListener("wheel", (event) => {
+  if (event.deltaY !== 0) {
+    event.preventDefault();
+    forecastContainer.scrollBy({
+      left: event.deltaY,
+      behavior: "smooth",
+    });
+  }
+});
