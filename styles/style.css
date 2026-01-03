@@ -55,6 +55,11 @@
   padding-inline: 5px;
 }
 
+.error {
+  border: 1px solid transparent;
+  outline: 2px solid red;
+}
+
 .location__button:active {
   border-color: transparent;
   outline: 2px solid black;

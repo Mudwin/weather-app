@@ -93,20 +93,27 @@ const createForecastItem = (iconSrc, time, temperature) => {
 
 const handleLocationButtonClick = async () => {
   const locationInputValue = locationInput.value;
-  localStorage.setItem("city", locationInputValue);
-  const currentWeather = await getCurrentWeatherByCity(locationInputValue);
-  const forecast = await getForecastByCity(locationInputValue);
 
-  const currentWeatherIconSrc = `http:${currentWeather.current.condition.icon}`;
-  const currentWeatherTemp = currentWeather.current.temp_c;
-  const currentWeatherStatus = currentWeather.current.condition.text;
+  try {
+    locationInput.classList.remove("error");
+    const currentWeather = await getCurrentWeatherByCity(locationInputValue);
+    const forecast = await getForecastByCity(locationInputValue);
 
-  renderCurrentWeather(
-    currentWeatherIconSrc,
-    currentWeatherTemp,
-    currentWeatherStatus
-  );
-  renderForecast(forecast.forecast.forecastday[0].hour);
+    localStorage.setItem("city", locationInputValue);
+
+    const currentWeatherIconSrc = `http:${currentWeather.current.condition.icon}`;
+    const currentWeatherTemp = currentWeather.current.temp_c;
+    const currentWeatherStatus = currentWeather.current.condition.text;
+
+    renderCurrentWeather(
+      currentWeatherIconSrc,
+      currentWeatherTemp,
+      currentWeatherStatus
+    );
+    renderForecast(forecast.forecast.forecastday[0].hour);
+  } catch (error) {
+    locationInput.classList.add("error");
+  }
 };
 
 locationButton.addEventListener("click", handleLocationButtonClick);
