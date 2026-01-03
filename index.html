@@ -3,7 +3,101 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <title>Weather App</title>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <div class="app-container">
+        <div class="location">
+          <input
+            type="text"
+            class="location__input"
+            placeholder="Введите ваш город..."
+          />
+          <button class="location__button">
+            <img src="./icons/location-icon.svg" alt="" />
+          </button>
+        </div>
+        <div class="current-weather">
+          <div class="current-weather__icon">
+            <img src="./icons/weather-icon.svg" alt="" />
+          </div>
+          <p class="current-weather__temperature">-3°С</p>
+          <p class="current-weather__status">Облачно</p>
+        </div>
+        <div class="forecast">
+          <div class="forecast__item">
+            <p class="forecast__item-time">Сейчас</p>
+            <div class="forecast__item-icon">
+              <img src="./icons/weather-icon.svg" alt="" />
+            </div>
+            <p class="forecast__item-temperature">-3°С</p>
+          </div>
+          <div class="forecast__item">
+            <p class="forecast__item-time">11:00</p>
+            <div class="forecast__item-icon">
+              <img src="./icons/weather-icon.svg" alt="" />
+            </div>
+            <p class="forecast__item-temperature">-3°С</p>
+          </div>
+          <div class="forecast__item">
+            <p class="forecast__item-time">12:00</p>
+            <div class="forecast__item-icon">
+              <img src="./icons/weather-icon.svg" alt="" />
+            </div>
+            <p class="forecast__item-temperature">-3°С</p>
+          </div>
+          <div class="forecast__item">
+            <p class="forecast__item-time">13:00</p>
+            <div class="forecast__item-icon">
+              <img src="./icons/weather-icon.svg" alt="" />
+            </div>
+            <p class="forecast__item-temperature">-3°С</p>
+          </div>
+          <div class="forecast__item">
+            <p class="forecast__item-time">14:00</p>
+            <div class="forecast__item-icon">
+              <img src="./icons/weather-icon.svg" alt="" />
+            </div>
+            <p class="forecast__item-temperature">-3°С</p>
+          </div>
+          <div class="forecast__item">
+            <p class="forecast__item-time">15:00</p>
+            <div class="forecast__item-icon">
+              <img src="./icons/weather-icon.svg" alt="" />
+            </div>
+            <p class="forecast__item-temperature">-3°С</p>
+          </div>
+          <div class="forecast__item">
+            <p class="forecast__item-time">16:00</p>
+            <div class="forecast__item-icon">
+              <img src="./icons/weather-icon.svg" alt="" />
+            </div>
+            <p class="forecast__item-temperature">-3°С</p>
+          </div>
+          <div class="forecast__item">
+            <p class="forecast__item-time">17:00</p>
+            <div class="forecast__item-icon">
+              <img src="./icons/weather-icon.svg" alt="" />
+            </div>
+            <p class="forecast__item-temperature">-3°С</p>
+          </div>
+          <div class="forecast__item">
+            <p class="forecast__item-time">18:00</p>
+            <div class="forecast__item-icon">
+              <img src="./icons/weather-icon.svg" alt="" />
+            </div>
+            <p class="forecast__item-temperature">-3°С</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
